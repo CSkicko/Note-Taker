@@ -1,7 +1,9 @@
-const notes = require('express').Router();
+const notesRouter = require('express').Router();
+const notes = require('../db/db.json');
 
-notes.get('/', (req, res) => {
-    console.log(`Request method: ${req.method}`)
+notesRouter.get('/', (req, res) => {
+    console.log(notes);
+    return res.json(notes);
 })
 
-module.exports = notes;
+module.exports = notesRouter;
