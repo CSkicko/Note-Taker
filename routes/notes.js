@@ -1,10 +1,9 @@
 const notesRouter = require('express').Router();
 const fs = require('fs');
-const notes = require('../db/db.json');
 
 // Get the notes list when a get method is sent to /api/notes
 notesRouter.get('/', (req, res) => {
-    console.log(notes);
+    const notes = JSON.parse(fs.readFileSync('./db/db.json'));
     return res.json(notes);
 });
 
