@@ -26,6 +26,8 @@ To run the application on your local machine, complete the installation process 
 ```
 npm start
 ```
+A screenshot of the application is provided below:
+![arcane-springs-72202 herokuapp com_notes](https://user-images.githubusercontent.com/84214056/182521922-67bd2866-2288-4503-ad73-68bc39e687e0.png)
 
 ## Collaborators
 The following personnel have been involved in the devleopment of this application:
@@ -39,3 +41,6 @@ At the time of writing, no specific tests have been written for this repository.
 
 ## Questions
 Should you have any questions, please contact me via [GitHub](https://github.com/CSkicko) or by [email](mailto:craig.skicko@gmail.com)
+
+## Deployed application
+The deployed application can be found at: https://arcane-springs-72202.herokuapp.com/
