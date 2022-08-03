@@ -9,12 +9,31 @@ notesRouter.get('/', (req, res) => {
 
 // Save the new note to the notes list when a post method is sent to /api/notes
 notesRouter.post('/', (req, res) => {
-    // Set the new note parameter equal to the body of the post request
     const newNote = req.body;
-    // Read the current db file
+
+    // Read the current db file and set to notes list
     const currentNotes = fs.readFileSync('./db/db.json');
-    // Initiate the new notes list by parsing the JSON data received 
     let notesList = JSON.parse(currentNotes);
+
+    // Set the ID for the new note
+    let ids = [];
+    let newId = 0;
+    let unique = false;
+
+    for (notes of notesList){
+        ids.push(parseInt(notes.id));
+        console.log(notes);
+        console.log(ids);
+    }
+
+    while(!unique){
+        newId ++;
+        if(!ids.includes(newId)){
+            unique = true;
+        }
+    }
+    newNote.id = newId;
+
     // Add the new note to the list
     notesList.push(newNote);
     // Write the new notes list to the db file
@@ -22,5 +41,9 @@ notesRouter.post('/', (req, res) => {
     // Provide a success message
     res.json(`Successfully updated notes list`);
 });
+
+// notesRouter.delete('/:id', (req, res) => {
+
+// })
 
 module.exports = notesRouter;
