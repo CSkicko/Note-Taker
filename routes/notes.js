@@ -42,8 +42,21 @@ notesRouter.post('/', (req, res) => {
     res.json(`Successfully updated notes list`);
 });
 
-// notesRouter.delete('/:id', (req, res) => {
+notesRouter.delete('/:id', (req, res) => {
+    // Obtain note id that the user wants to delete
+    const noteId = req.params.id;
+    // Obtain the current notes from the database
+    const currentNotes = fs.readFileSync('./db/db.json');
+    let notesList = JSON.parse(currentNotes);
 
-// })
+    console.log(`Initial notes list ${notesList}`);
+    // Filter the notes list to remove the note with the selected id
+    notesList = notesList.filter(note => note.id != noteId);
+    console.log(`New notes list ${notesList}`)
+
+    fs.writeFileSync('./db/db.json', JSON.stringify(notesList));
+
+    res.json(`Note deleted`);
+})
 
 module.exports = notesRouter;
